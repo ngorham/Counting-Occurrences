@@ -13,15 +13,17 @@ function CountOccurrences(arrA){
 	//Private variables
 	var counts = []; //array of key value pairs
 	var arrayA = arrA; //mergeSort array
-	var arrayB = []; //output array of counting sort
 	//Private Methods
 	//Main process
 	run = function(){
 		console.log("Before Sort: " + arrayA);
+		print("input");
 		mergeSort(arrayA);
 		console.log("After Sort: " + arrayA);
+		print("output");
 		numOfOccurrences(arrayA);
 		console.log(counts);
+		printCounts();
 	}
 	//Merge Sort utility
 	mergeSort = function(arrA){
@@ -89,6 +91,18 @@ function CountOccurrences(arrA){
 				counts.push(count);
 			}
 		}
+	}
+	//Prints array of values
+	print = function(timeOfSort){
+		document.getElementById(timeOfSort).innerHTML = arrayA;
+	}
+	//Prints the counts array to HTML
+	printCounts = function(){
+		var text = "";
+		for(var i = 0; i < counts.length; i++){
+			text += counts[i].key + " appears " + counts[i].value + " time(s)<br >";
+		}
+		document.getElementById("counts").innerHTML = text;
 	}
 	//Main Process called
 	run();

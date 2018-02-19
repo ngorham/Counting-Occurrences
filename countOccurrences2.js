@@ -20,9 +20,12 @@ function CountOccurrences2(arrA, arrB, k){
 	//Main process
 	run = function(){
 		console.log("Before Sort: " + arrayA);
+		printInput();
 		countingSort(arrayA, arrayB, highVal);
 		console.log("After Sort: " + arrayB);
+		printOutput();
 		console.log(counts);
+		printCounts();
 	}
 
 	//Counting Sort utility
@@ -40,6 +43,22 @@ function CountOccurrences2(arrA, arrB, k){
 			arrayC[arrA[j]] = arrayC[arrA[j]] - 1;
 		}
 	}
+	//Prints input array of values
+	printInput = function(){
+		document.getElementById("input").innerHTML = arrayA;
+	}
+	//Prints output array of values
+	printOutput = function(){
+		document.getElementById("output").innerHTML = arrayB;
+	}
+	//Prints the counts array to HTML
+	printCounts = function(){
+		var text = "";
+		for(var i = 0; i < counts.length; i++){
+			text += counts[i].key + " appears " + counts[i].value + " time(s)<br >";
+		}
+		document.getElementById("counts").innerHTML = text;
+	}	
 	//Main process called
 	run();
 	return {
