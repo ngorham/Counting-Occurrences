@@ -1,5 +1,5 @@
 /**
- * Counting Occurrences
+ * Counting Occurrences using Merge Sort
  * countOccurrences.js
  * Purpose:
  * 
@@ -8,16 +8,18 @@
  */
 
 //Count Occurrences Constructor
-//
+//arrA: array of nonnegative integer values
 function CountOccurrences(arrA){
 	//Private variables
-	var counts = []; // array of key value pairs
-	var arrayA = arrA;
+	var counts = []; //array of key value pairs
+	var arrayA = arrA; //mergeSort array
+	var arrayB = []; //output array of counting sort
 	//Private Methods
 	//Main process
 	run = function(){
+		console.log("Before Sort: " + arrayA);
 		mergeSort(arrayA);
-		console.log(arrayA);
+		console.log("After Sort: " + arrayA);
 		numOfOccurrences(arrayA);
 		console.log(counts);
 	}
@@ -62,10 +64,6 @@ function CountOccurrences(arrA){
 			j++;
 			k++;
 		}
-	}
-	//Counting Sort utility
-	countingSort = function(){
-
 	}
 	//Counts number of occurrences
 	//Pre-condition: arrA is sorted in ascending order
