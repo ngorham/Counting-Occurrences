@@ -1,7 +1,7 @@
 /**
  * Counting Occurrences using Merge Sort
  * countOccurrences.js
- * Purpose:
+ * Purpose: Counts the number of occurrences of an integer in a given array
  * 
  * @author Neil Gorham
  * @version 1.0.0 02/19/2018
