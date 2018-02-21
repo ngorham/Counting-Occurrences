@@ -7,20 +7,27 @@
  * @version 1.0.0 02/19/2018
  */
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
+
 public class CountOccurrences{
 	//Private variables
 	private int[] arrA;
+	private HashMap<Integer, Integer> counts;
 	//Public Methods
 	//Main Constructor
 	public CountOccurrences(){}
 
 	public CountOccurrences(int[] arrA){
 		this.arrA = arrA;
+		this.counts = new HashMap<>();
 	}
 
 	//Main process
 	public static void main(String[] args){
-		int[] arrA = {1,0,3,6,2,1,0,4};
+		int[] arrA = {8,9,7,6,8,1,1,3,2,8,4,5,0,10};
 		CountOccurrences co = new CountOccurrences(arrA);
 		co.run();
 	}
@@ -33,6 +40,8 @@ public class CountOccurrences{
 		System.out.println("After Sort: ");
 		printArray(arrA);
 		System.out.println("Number of Occurrences: ");
+		numOfOccurrences(arrA, counts);
+		printCounts(counts);
 	}
 	//Merge Sort utility
 	private void mergeSort(int[] arrA){
@@ -74,10 +83,24 @@ public class CountOccurrences{
 			k++;
 		}				
 	}
-	//Counts number of occurrences
+	//Counts and stores number of occurrences
 	//Pre-condition: arrA is sorted in ascending order
-	private void numOfOccurrences(int[] arrA){
+	private void numOfOccurrences(int[] arrA, HashMap<Integer, Integer> counts){
+		for(int i = 0; i < arrA.length; i++){
+			Integer key = new Integer(arrA[i]);
+			Integer value;
+			if(counts.containsKey(key)){
+				//increment count
+				int count = counts.get(key).intValue() + 1;
+				value = new Integer(count);
+			} else {
+				//add key-value to counts
+				value = new Integer(1);
+			}
+			counts.put(key, value);
+			//System.out.println("key: " + key.intValue() + " value: " + counts.get(key).intValue());
 
+		}
 	}
 	//Print array value of length n
 	private void printArray(int arrA[]){
@@ -85,5 +108,14 @@ public class CountOccurrences{
 			System.out.print(arrA[i] + " ");
 		}
 		System.out.println();
+	}
+	//Print counts
+	private void printCounts(HashMap<Integer, Integer> counts){
+		Set c = counts.entrySet();
+		Iterator i = c.iterator();
+		while(i.hasNext()){
+			Map.Entry me = (Map.Entry)i.next();
+			System.out.println(me.getKey() + " appears " + me.getValue() + " time(s)");
+		}
 	}
 }
