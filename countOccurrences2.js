@@ -1,7 +1,7 @@
 /**
  * Counting Occurrences using Counting Sort
  * countOccurrences2.js
- * Purpose: Counts the number of occurrences of an integer in a given array
+ * Purpose: Counts the number of occurrences of integers in a given array
  * 
  * @author Neil Gorham
  * @version 1.0.0 02/19/2018
@@ -9,6 +9,8 @@
 
 //Count Occurrences Constructor
 //arrA: array of nonnegative integer values
+//arrB: array of nonnegative integer values
+//k: greatest integer value in arrA
 function CountOccurrences2(arrA, arrB, k){
 	//Private variables
 	var arrayA = arrA;
@@ -26,6 +28,7 @@ function CountOccurrences2(arrA, arrB, k){
 		printOutput();
 		console.log(counts);
 		printCounts();
+        print3();
 	}
 
 	//Counting Sort utility
@@ -58,7 +61,20 @@ function CountOccurrences2(arrA, arrB, k){
 			text += counts[i].key + " appears " + counts[i].value + " time(s)<br >";
 		}
 		document.getElementById("counts").innerHTML = text;
-	}	
+	}
+    //Prints the first count of value of 3
+    print3 = function(){
+        var text = "";
+        for(var i = 0; i < counts.length; i++){
+            if(counts[i].value == 3){
+                text += counts[i].key + " appears " + counts[i].value + " time(s)<br >"
+            }
+        }
+        if(text == ""){
+            text = "none";
+        }
+        document.getElementById("count3").innerHTML = text;
+    }
 	//Main process called
 	run();
 	return {

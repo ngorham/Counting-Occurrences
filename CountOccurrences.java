@@ -42,6 +42,8 @@ public class CountOccurrences{
 		System.out.println("Number of Occurrences: ");
 		numOfOccurrences(arrA, counts);
 		printCounts(counts);
+        System.out.println("3 Occurrences");
+        print3(counts);
 	}
 	//Merge Sort utility
 	private void mergeSort(int[] arrA){
@@ -115,7 +117,20 @@ public class CountOccurrences{
 		Iterator i = c.iterator();
 		while(i.hasNext()){
 			Map.Entry me = (Map.Entry)i.next();
-			System.out.println(me.getKey() + " appears " + me.getValue() + " time(s)");
+            System.out.println(me.getKey() + " appears " + me.getValue() + " time(s)");
 		}
 	}
+    //Prints the first count of value of 3
+    private void print3(HashMap<Integer, Integer> counts){
+ 		Set c = counts.entrySet();
+		Iterator i = c.iterator();
+		while(i.hasNext()){
+			Map.Entry me = (Map.Entry)i.next();
+            Integer value = (Integer)me.getValue();
+            if(value.intValue() == 3){
+                System.out.println(me.getKey() + " appears " + me.getValue() + " time(s)");
+            }
+		}       
+        
+    }
 }
